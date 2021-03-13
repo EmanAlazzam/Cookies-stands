@@ -1,3 +1,5 @@
+//LAB06 CREATING OBJECTS.
+
 'use strict';
 
 //Hour Array To Specify the the time of opening and closing.
