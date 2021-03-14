@@ -2,21 +2,24 @@ body{
     text-align: center;
 }
 
-#table{
-    display: block;
-    margin-top: 20px;
-
-}
-td,tr{
-    border: 1px solid black;
-    padding: 5px;
-}
 table{
-    /* border-collapse: collapse; */
-    border:2px black solid;
+    margin-left: 100px;
+    border:1px black solid;
   }
   
-  td, th, tr{
-    display: block;
-    border:solid 3px black;
+  td,th{
+      display:contents;
+      text-align: center;
+  }
+
+  th {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-weight: bold;
+    background-color: rgb(70, 63, 62);
+    color:#b57b8c;
+  } 
+ 
+  td{
+    font-weight: bold;
   }
