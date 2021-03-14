@@ -1,10 +1,7 @@
-body{
-    text-align: center;
-}
-
 table{
     margin-left: 100px;
     border:1px black solid;
+    text-align: center;
   }
   
   td,th{
