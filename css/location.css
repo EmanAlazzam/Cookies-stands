@@ -46,10 +46,6 @@ body {
     text-decoration: none;
     color:rgb(236, 225, 230);
 }
-main ul li{
-    margin-right: 50ox;
-}
-
 a:hover,
 a:active {
     background-color:  rgb(231, 104, 19);
