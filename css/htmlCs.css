@@ -42,6 +42,7 @@ body {
     font-style: italic;
     font-weight:bolder;
     text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
     color:rgb(236, 225, 230);
 }
 
@@ -59,18 +60,26 @@ a:active {
 #center h1{
     font-size: 70px;
     font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
 }
 #center p{
     font-size: 50px;
 }
 #center #button{
     margin: 35px;
+   
+    font-family: 'Times New Roman', Times, serif;
+
 }
 #button button{
     width: 300px;
     height: 50px;
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 18px;
     font-weight: bold;
     background-color: rgba(102, 43, 116, 0.4);
     border: none;
+}
+#button :hover{
+    background-color: rgb(0, 0,0,0.4);
 }

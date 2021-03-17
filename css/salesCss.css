@@ -85,7 +85,7 @@ a:active {
 table{
     border: 1px black solid;
     text-align: center;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Helvetica;
     font-size: large;
     font-weight: bold;
     background-color:  rgba(243, 232, 232, 0.4);
