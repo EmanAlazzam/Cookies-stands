@@ -1,0 +1,22 @@
+/* table{
+    margin-left: 100px;
+    border:1px black solid;
+    text-align: center;
+  }
+  
+  td,th{
+      display:contents;
+      text-align: center;
+  }
+
+  th {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-weight: bold;
+    background-color: rgb(70, 63, 62);
+    color:#b57b8c;
+  } 
+ 
+  td{
+    font-weight: bold;
+  } */
