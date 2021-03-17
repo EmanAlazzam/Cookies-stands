@@ -4,13 +4,16 @@
 let myTableId = document.getElementById('fuild');//Calling the table by The ID.
 let tableCreator = document.createElement('table');//creating the table.
 
+//Appen the body to the Table
 myTableId.appendChild(tableCreator);
 
+//the form ID
+let input=document.getElementById('formID');
 
 //Hour Array To Specify the the time of opening and closing.
 let hour=['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'];
 let sumOfTotal=[];
-let cityTotal=[];
+// let cityTotal=[];
 //A Constructor Instide Of The 5 Previous Objects.
 function CityData(max,min,avg,name,total) {
   this.max=max;
@@ -39,6 +42,7 @@ CityData.prototype.avgOfCockiesForEachPerson= function() {
   sumOfTotal.push(this.total);
   console.log(sumOfTotal);
 };
+
 
 //generating the table content.
 CityData.prototype.generatTableForTheCities= function() {
@@ -87,6 +91,8 @@ console.log(Paris);
 let Lima= new CityData(16,2, 4.6,'Lima',0);
 console.log(Lima);
 
+
+
 let cityList=[seattle,Tokyo,Dubai,Paris,Lima];
 
 //Generating Head For The Table.
@@ -100,7 +106,7 @@ function generatHeaderForTheTable(){
 
   //First Cell for my table which is the city name.
   let tableData = document.createElement('td');
-  tableData.textContent='City Name /  ';
+  tableData.textContent='Citys Names ';
   tableHead.appendChild(tableData);
 
   //creating the other elements in the table.
@@ -114,11 +120,11 @@ function generatHeaderForTheTable(){
   tableHead.appendChild(tableData);
 }
 
+//Creating the first table data to include the name in it.
+let tableFoot = document.createElement('tr');
+
 //Genarating the Foot fot the Table.
 function generatFooterForTheTable() {
-
-  //Creating the first table data to include the name in it.
-  let tableFoot = document.createElement('tr');
 
   //appending the data.
   tableCreator.appendChild(tableFoot);
@@ -154,4 +160,32 @@ Dubai.generatTableForTheCities();
 Paris.generatTableForTheCities();
 Lima.generatTableForTheCities();
 
-generatFooterForTheTable();
+
+//add  even to enable control on it
+input.addEventListener('submit', addingNewElement());
+
+
+function addingNewElement(event) {
+  event.preventDefault();//default action that belongs to the event will not occur.
+
+  //set the new data to the object
+  let name=event.target.fname.value;
+  let max=parseInt(event.target.max.value);
+  let nmn=parseInt(event.target.min.value);
+  let avg=parseInt(event.target.avg.value);
+
+  // Calling The Objects By "The New Data Of Each City" Inside A Costructor.
+  let newItem= new CityData(max,nmn,avg,name,0);
+  console.log(newItem);
+
+  //to generate the new row for the new city
+  newItem.generatTableForTheCities();
+
+  //remove the existing footer to add the new one
+  myTableId.removeChild(tableFoot);
+
+  //calling the footer
+  generatFooterForTheTable();
+
+
+}
