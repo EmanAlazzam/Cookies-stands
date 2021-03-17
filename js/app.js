@@ -6,6 +6,7 @@ let tableCreator = document.createElement('table');//creating the table.
 
 myTableId.appendChild(tableCreator);
 
+let form=document.getElementById('formID');
 
 //Hour Array To Specify the the time of opening and closing.
 let hour=['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'];
@@ -21,6 +22,16 @@ function CityData(max,min,avg,name,total) {
   this.coockiesForEachPerson=[];
   this.total=total;
 
+  this.newData=function(){
+    form.addEventListener('submit',function(event){
+      event.preventDefault();
+      this.min = event.target.min.value;
+      this.max = event.target.max.value;
+      this.avg = event.target.avg.value;
+      this.name= event.target.fname.value;
+
+    });
+  };
   this.randomCus=function(){
     for(let b=0; b<hour.length;b++ ){
       let randCustomer= (Math.floor(Math.random() * (this.max - this.min+1) + this.min));
@@ -38,6 +49,12 @@ CityData.prototype.avgOfCockiesForEachPerson= function() {
   }
   sumOfTotal.push(this.total);
   console.log(sumOfTotal);
+};
+
+CityData.prototype.newItems=function (){
+  this.newDataCity();
+  this.allCokiesPerHours();
+  this.renderCityValue();
 };
 
 //generating the table content.
@@ -87,7 +104,9 @@ console.log(Paris);
 let Lima= new CityData(16,2, 4.6,'Lima',0);
 console.log(Lima);
 
-let cityList=[seattle,Tokyo,Dubai,Paris,Lima];
+let newCity= new CityData(this.max,this.min,this.avg,this.fname,0);
+
+let cityList=[seattle,Tokyo,Dubai,Paris,Lima,newCity];
 
 //Generating Head For The Table.
 function generatHeaderForTheTable(){
@@ -155,3 +174,5 @@ Paris.generatTableForTheCities();
 Lima.generatTableForTheCities();
 
 generatFooterForTheTable();
+
+//adding new data to the table by the user
