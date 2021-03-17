@@ -1,6 +1,11 @@
 //LAB07 CREATING CONSTRUCTOR AND TABLE.
 
 'use strict';
+let myTableId = document.getElementById('fuild');//Calling the table by The ID.
+let tableCreator = document.createElement('table');//creating the table.
+
+myTableId.appendChild(tableCreator);
+
 
 //Hour Array To Specify the the time of opening and closing.
 let hour=['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'];
@@ -34,37 +39,38 @@ CityData.prototype.avgOfCockiesForEachPerson= function() {
   sumOfTotal.push(this.total);
   console.log(sumOfTotal);
 };
+
 //generating the table content.
 CityData.prototype.generatTableForTheCities= function() {
-  let myTableId = document.getElementById('fuild');//Calling the table by The ID.
-  let tableCreator = document.createElement('table');//creating the table.
-  let tableBody = document.createElement('tr');//Creating the first table data to include the name in it.
 
-  //appending the data
-  myTableId.appendChild(tableCreator);
-  tableCreator.appendChild(tableBody);
+  //Creating the first table data to include the name in it.
+  let tableBody = document.createElement('tr');
 
   //Calling the name and append it.
-  let tableRows = document.createElement('tr');
+  let tableRows = document.createElement('td');
   let nameOfTheCity=this.name+': ';
+
+  //appending the data
+  tableCreator.appendChild(tableBody);
   tableBody.appendChild(tableRows);
-  tableRows.append(nameOfTheCity);
+  tableRows.textContent=nameOfTheCity;
 
   this.avgOfCockiesForEachPerson();
   //creating the other elements in the table.
   for (let j = 0; j <hour.length; j++) {
     let tableData = document.createElement('td');
     let cookiesNumber=this.coockiesForEachPerson[j];
-    tableData.appendChild(document.createTextNode(cookiesNumber+' '));
-    tableBody.appendChild(tableRows);
-    tableRows.appendChild(tableData);
+    tableData.textContent=cookiesNumber+' ';
+    // tableBody.appendChild(tableRows);
+    tableBody.appendChild(tableData);
   }
   let tableData = document.createElement('td');
-  tableData.appendChild(document.createTextNode(this.total));
-  tableRows.appendChild(tableData);
-  tableBody.appendChild(tableRows);
+  tableData.textContent=this.total;
+  tableBody.appendChild(tableData);
+  // tableBody.appendChild(tableRows);
 
 };
+
 // Calling The Objects By "The Data Of Each City" Inside A Costructor.
 let seattle=new CityData(65,23,6.3,'Seattle',0);
 console.log(seattle);
@@ -86,26 +92,24 @@ let cityList=[seattle,Tokyo,Dubai,Paris,Lima];
 //Generating Head For The Table.
 function generatHeaderForTheTable(){
 
-  let myTableHead = document.getElementById('fuild');//Calling the table by The ID.
-  let tableCreator = document.createElement('table');//creating the table.
-  let tableHead = document.createElement('tr');//Creating the first table data to include the name in it.
+  //Creating the first table data to include the name in it.
+  let tableHead = document.createElement('tr');
 
   //appending the data.
-  myTableHead.appendChild(tableCreator);
   tableCreator.appendChild(tableHead);
 
   //First Cell for my table which is the city name.
-  let tableData = document.createElement('th');
+  let tableData = document.createElement('td');
   tableData.textContent='City Name /  ';
   tableHead.appendChild(tableData);
 
   //creating the other elements in the table.
   for (let i = 0; i < hour.length; i++) {
-    let tableData = document.createElement('th');
+    let tableData = document.createElement('td');
     tableData.textContent=hour[i]+' ';
     tableHead.appendChild(tableData);
   }
-  tableData = document.createElement('th');
+  tableData = document.createElement('td');
   tableData.textContent='Each City Total ';
   tableHead.appendChild(tableData);
 }
@@ -113,36 +117,35 @@ function generatHeaderForTheTable(){
 //Genarating the Foot fot the Table.
 function generatFooterForTheTable() {
 
-  let myTableFoot = document.getElementById('fuild');//Calling the table by The ID "tavleid".
-  let tableCreator = document.createElement('table');//creating the table.
-  let tableFoot = document.createElement('tr');//Creating the first table data to include the name in it.
+  //Creating the first table data to include the name in it.
+  let tableFoot = document.createElement('tr');
 
   //appending the data.
-  myTableFoot.appendChild(tableCreator);
   tableCreator.appendChild(tableFoot);
 
   let totalOfTheTotal=0;
   //First Cell for my table which is the city name.
-  let tableData = document.createElement('th');
+  let tableData = document.createElement('td');
   tableData.textContent='Total / ';
   tableFoot.appendChild(tableData);
 
   //creating the other elements in the table.
-  for (let i = 0; i < hour.length; i++) {
+  for (let i = 0; i < hour.length; i++){
     let hours=0;
     for(let j=0;j<cityList.length;j++){
       hours+=cityList[j].coockiesForEachPerson[i];
       totalOfTheTotal+=cityList[j].coockiesForEachPerson[i];
     }
-    let tableData = document.createElement('th');
+    let tableData = document.createElement('td');
     tableData.textContent=hours+'   ';
     tableFoot.appendChild(tableData);
   }
-  let tableData1 = document.createElement('th');
+  let tableData1 = document.createElement('td');
   tableData1.textContent=totalOfTheTotal+'   ';
   tableFoot.appendChild(tableData1);
 }
 
+//calling the functions to apply them
 generatHeaderForTheTable();
 
 seattle.generatTableForTheCities();
