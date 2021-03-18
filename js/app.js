@@ -1,4 +1,4 @@
-//LAB07 CREATING CONSTRUCTOR AND TABLE.
+//LAB09 CREATING LABLE TO TAKE DATAFROM THE USER
 
 'use strict';
 let myTableId = document.getElementById('fuild');//Calling the table by The ID.
@@ -7,7 +7,7 @@ let tableCreator = document.createElement('table');//creating the table.
 //Appen the body to the Table
 myTableId.appendChild(tableCreator);
 
-//the form ID
+//form ID
 let input=document.getElementById('formID');
 
 //Hour Array To Specify the the time of opening and closing.
@@ -120,11 +120,11 @@ function generatHeaderForTheTable(){
   tableHead.appendChild(tableData);
 }
 
-//Creating the first table data to include the name in it.
-let tableFoot = document.createElement('tr');
-
 //Genarating the Foot fot the Table.
 function generatFooterForTheTable() {
+
+  //Creating the first table data to include the name in it.
+  let tableFoot = document.createElement('tr');
 
   //appending the data.
   tableCreator.appendChild(tableFoot);
@@ -162,11 +162,10 @@ Lima.generatTableForTheCities();
 
 
 //add  even to enable control on it
-input.addEventListener('submit', addingNewElement());
+input.addEventListener('submit',function(event) {
 
-
-function addingNewElement(event) {
-  event.preventDefault();//default action that belongs to the event will not occur.
+  //default action that belongs to the event will not occur.
+  event.preventDefault();
 
   //set the new data to the object
   let name=event.target.fname.value;
@@ -181,11 +180,8 @@ function addingNewElement(event) {
   //to generate the new row for the new city
   newItem.generatTableForTheCities();
 
-  //remove the existing footer to add the new one
-  myTableId.removeChild(tableFoot);
-
   //calling the footer
   generatFooterForTheTable();
 
 
-}
+});
